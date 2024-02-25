@@ -1,0 +1,248 @@
+// pc 1280-
+// tablet 768-
+// sp -767
+
+@mixin tablet {
+  @media(max-width: 1279px) {
+    @content;
+  }
+}
+
+@mixin sp {
+  @media(max-width: 767px) {
+    @content;
+  }
+}
+
+// vw値 計算用 ここから　参考：https://meshikui.com/2021/12/13/3329/
+$pcSize: 1440px;
+$tabletSize: 768px;
+$spSize: 375px;
+
+@function pcvw($size: 10px) {
+  $pcvw: $size * 100vw / 1440px;
+  @return $pcvw
+}
+
+@function tabletvw($size: 10px) {
+  $tabletvw: $size * 100vw / 768px;
+  @return $tabletvw
+}
+
+@function spvw($size: 10px) {
+  $spvw: $size * 100vw / 375px;
+  @return $spvw
+}
+
+// vw値 計算用 ここまで
+
+
+.section_topics {
+  padding: pcvw(731px - 80px) calc(170px / 1440px * 100%) pcvw(60px);
+
+  @include tablet {
+    padding: tabletvw(40px) tabletvw(38px) tabletvw(40px) tabletvw(30px);
+  }
+
+  @include sp {
+    padding: spvw(976px) calc(15px / 375px * 100%) spvw(40px);
+  }
+
+  h3 {
+    font-family: 'Montserrat', sans-serif;
+    // font-weight: normal;
+    font-weight: 800;
+    // font-size: 32px;
+    font-size: pcvw(32px);
+    letter-spacing: 0.07em;
+    // line-height: 94px;
+    text-align: left;
+    color: #333;
+    padding-bottom: pcvw(32px);
+
+    @include tablet {
+      // font-family: "Montserrat ExtraBold";
+      // font-weight: normal;
+      // font-size: 32px;
+      font-size: tabletvw(32px);
+      // letter-spacing: 0.07em;
+      // line-height: 94px;
+      // text-align: left;
+      // color: #333;
+      padding-bottom: tabletvw(32px);
+    }
+
+    @include sp {
+      // font-family: "Montserrat ExtraBold";
+      // font-weight: normal;
+      // font-size: 28px;
+      font-size: spvw(28px);
+      // letter-spacing: 0.07em;
+      // line-height: 94px;
+      // text-align: left;
+      // color: #333;
+      padding-bottom: spvw(32px);
+    }
+  }
+
+  .topic-content {
+    padding-left: calc((570px - 170px) / 1100px * 100%);
+
+    @include tablet {
+      padding-left: 0;
+    }
+
+    @include sp {
+      padding-left: 0;
+    }
+
+    .topic-date {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: bold;
+      // font-size: 10px;
+      font-size: pcvw(10px);
+      letter-spacing: 0.02em;
+      // line-height: 32px;
+      text-align: left;
+      color: #cecece;
+      padding-bottom: pcvw(13px);
+
+      @include tablet {
+        // font-family: "Montserrat Medium";
+        // font-weight: bold;
+        // font-size: 10px;
+        font-size: tabletvw(10px);
+        // letter-spacing: 0.02em;
+        // line-height: 32px;
+        // text-align: left;
+        // color: #cecece;
+        padding-bottom: tabletvw(13px);
+      }
+
+      @include sp {
+        // font-family: "Montserrat Medium";
+        // font-weight: bold;
+        // font-size: 10px;
+        font-size: spvw(10px);
+        // letter-spacing: 0.02em;
+        // line-height: 32px;
+        // text-align: left;
+        // color: #cecece;
+        padding-bottom: spvw(11px);
+      }
+    }
+
+    .topic-title {
+      font-family: "游ゴシック体", YuGothic, "游ゴシック", "Yu Gothic", system-ui;
+      font-weight: bold;
+      // font-size: 14px;
+      font-size: pcvw(14px);
+      letter-spacing: 0em;
+      // line-height: 94px;
+      text-align: left;
+      color: #333;
+      border-bottom: 1px solid #ddd;
+      padding-bottom: pcvw(12px);
+      margin-bottom: pcvw(32px);
+
+      @include tablet {
+        // font-family: YuGothic;
+        // font-weight: bold;
+        // font-size: 14px;
+        font-size: tabletvw(14px);
+        // letter-spacing: 0em;
+        // line-height: 94px;
+        // text-align: left;
+        color: #333;
+        // border: 1px solid #ddd;
+        padding-bottom: tabletvw(12px);
+        margin-bottom: tabletvw(32px);
+      }
+
+      @include sp {
+        // width: 345px;
+        // height: 35px;
+        // font-family: YuGothic;
+        // font-weight: bold;
+        // font-size: 12px;
+        font-size: spvw(12px);
+        // letter-spacing: 0.07em;
+        letter-spacing: 0.05em; // 調整値
+        // text-align: left;
+        color: #333;
+        padding-bottom: spvw(10px);
+        margin-bottom: spvw(22px);
+      }
+    }
+
+    .topic-title:last-child {
+      margin-bottom: pcvw(30px);
+
+      @include tablet {
+        margin-bottom: tabletvw(30px);
+      }
+
+      @include sp {
+        margin-bottom: spvw(30px);
+      }
+    }
+  }
+
+  .topic-button {
+    text-align: right;
+
+    @include tablet {
+      text-align: left;
+    }
+
+    @include sp {
+      text-align: left;
+    }
+
+    button {
+      width: pcvw(160px);
+      height: pcvw(36px);
+      background: #000;
+      font-family: 'Montserrat', sans-serif;
+      font-weight: bold;
+      font-size: pcvw(12px);
+      letter-spacing: 0.02em;
+      // line-height: 32px;
+      text-align: center;
+      color: #fff;
+      // margin-left: pcvw(30px);
+
+      @include tablet {
+        // width: 160px;
+        width: tabletvw(160px);
+        // height: 36px;
+        height: tabletvw(36px);
+        // background: #000;
+        // font-family: "Montserrat Medium";
+        // font-weight: bold;
+        // font-size: 12px;
+        font-size: tabletvw(12px);
+        // letter-spacing: 0.02em;
+        // line-height: 32px;
+        // text-align: left;
+        // color: #fff;
+      }
+
+      @include sp {
+        // width: 160px;
+        width: spvw(160px);
+        // height: 36px;
+        height: spvw(36px);
+        // background: #000;
+        // font-family: "Montserrat Medium";
+        // font-weight: bold;
+        // font-size: 12px;
+        font-size: spvw(12px);
+        // letter-spacing: 0.02em;
+        // line-height: 32px;
+        // text-align: left;
+        // color: #fff;
+      }
+    }
+  }
+}

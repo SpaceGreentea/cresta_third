@@ -1,0 +1,235 @@
+// pc 1280-
+// tablet 768-
+// sp -767
+
+@mixin tablet {
+  @media(max-width: 1279px) {
+    @content;
+  }
+}
+
+@mixin sp {
+  @media(max-width: 767px) {
+    @content;
+  }
+}
+
+// vw値 計算用 ここから　参考：https://meshikui.com/2021/12/13/3329/
+$pcSize: 1440px;
+$tabletSize: 768px;
+$spSize: 375px;
+
+@function pcvw($size: 10px) {
+  $pcvw: $size * 100vw / 1440px;
+  @return $pcvw
+}
+
+@function tabletvw($size: 10px) {
+  $tabletvw: $size * 100vw / 768px;
+  @return $tabletvw
+}
+
+@function spvw($size: 10px) {
+  $spvw: $size * 100vw / 375px;
+  @return $spvw
+}
+
+// vw値 計算用 ここまで
+
+.section_contact {
+  // width: 580px;
+  width: 100%;
+  // height: 570px;
+  height: pcvw(570px);
+  background: #f2f2f2;
+  position: relative;
+
+  @include tablet {
+    height: tabletvw(747px - (50px - 36px));
+  }
+
+  @include sp {
+    height: spvw(622px);
+  }
+
+  h3 {
+    // font-family: "Montserrat ExtraBold";
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 800;
+    // font-size: 32px;
+    font-size: pcvw(32px);
+    letter-spacing: 0.07em;
+    // line-height: 94px;
+    // text-align: left;
+    color: #333;
+    position: absolute;
+    top: pcvw(132px);
+    left: pcvw(170px);
+
+    @include tablet {
+      // font-family: "Montserrat ExtraBold";
+      // font-weight: normal;
+      // font-size: 32px;
+      font-size: tabletvw(32px);
+      // line-height: 94px;
+      // text-align: left;
+      // color: #333;
+      position: absolute;
+      top: tabletvw(420px);
+      left: tabletvw(30px);
+    }
+
+    @include sp {
+      // font-family: "Montserrat ExtraBold";
+      // font-weight: normal;
+      // font-size: 28px;
+      font-size: spvw(28px);
+      // letter-spacing: 0.07em;
+      // line-height: 94px;
+      // text-align: left;
+      // color: #333;
+      position: absolute;
+      top: spvw(302px);
+      left: spvw(15px);
+    }
+  }
+
+  p {
+    // width: 440px;
+    width: pcvw(440px);
+    // height: 112px;
+    font-family: "游ゴシック体", YuGothic, "游ゴシック", "Yu Gothic", system-ui;
+    font-weight: 500;
+    // font-size: 16px;
+    font-size: pcvw(16px);
+    // line-height: 32px;
+    line-height: calc(32px / 16px);
+    text-align: left;
+    color: #333;
+    position: absolute;
+    top: pcvw(201px);
+    left: pcvw(170px);
+
+    @include tablet {
+      // width: 510px;
+      width: tabletvw(510px);
+      // height: 98px;
+      // font-family: YuGothic;
+      // font-weight: 500;
+      // font-size: 16px;
+      font-size: tabletvw(16px);
+      // line-height: 32px;
+      // text-align: left;
+      // color: #333;
+      position: absolute;
+      top: tabletvw(489px);
+      left: tabletvw(30px);
+    }
+
+    @include sp {
+      // width: 345px;
+      width: 100%;
+      // height: 150px;
+      // font-family: YuGothic;
+      // font-weight: 500;
+      // font-size: 16px;
+      font-size: spvw(16px);
+      // line-height: 32px;
+      // text-align: left;
+      // color: #333;
+      position: absolute;
+      top: spvw(366px);
+      left: 0;
+      padding-left: spvw(15px);
+      padding-right: spvw(15px);
+    }
+  }
+
+  button {
+    width: pcvw(160px);
+    height: pcvw(36px);
+    background: #000;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: bold;
+    font-size: pcvw(12px);
+    letter-spacing: 0.02em;
+    // line-height: 32px;
+    text-align: center;
+    color: #fff;
+    position: absolute;
+    top: pcvw(343px);
+    left: pcvw(170px);
+
+    @include tablet {
+      // width: 160px;
+      width: tabletvw(160px);
+      // height: 36px;
+      height: tabletvw(36px);
+      // background: #000;
+      // font-family: "Montserrat Medium";
+      // font-weight: bold;
+      // font-size: 12px;
+      font-size: tabletvw(12px);
+      // letter-spacing: 0.02em;
+      // line-height: 32px;
+      // text-align: left;
+      // color: #fff;
+      position: absolute;
+      top: tabletvw(617px);
+      left: tabletvw(30px);
+    }
+
+    @include sp {
+      // width: 160px;
+      width: spvw(160px);
+      // height: 36px;
+      height: spvw(36px);
+      // background: #000;
+      // font-family: "Montserrat Medium";
+      // font-weight: bold;
+      // font-size: 12px;
+      font-size: spvw(12px);
+      // letter-spacing: 0.02em;
+      // line-height: 32px;
+      // text-align: left;
+      // color: #fff;
+      top: spvw(546px);
+      left: spvw(15px);
+    }
+  }
+
+  img {
+    // width: 580px;
+    width: pcvw(580px);
+    // height: 390px;
+    height: pcvw(390px);
+    background: transparent;
+    position: absolute;
+    top: pcvw(60px);
+    right: pcvw(170px);
+
+    @include tablet {
+      // width: 520px;
+      width: tabletvw(520px);
+      // height: 350px;
+      height: tabletvw(350px);
+      // background: rgba(0, 0, 0, 0.34);
+      position: absolute;
+      top: tabletvw(40px);
+      left: tabletvw(30px);
+    }
+
+    @include sp {
+      // width: 345px;
+      width: 100%;
+      // height: 232px;
+      height: spvw(232px);
+      // background: rgba(0, 0, 0, 0.34);
+      position: absolute;
+      top: spvw(40px);
+      left: 0;
+      padding-left: spvw(15px);
+      padding-right: spvw(15px);
+    }
+  }
+}

@@ -1,0 +1,109 @@
+// pc 1280-
+// tablet 768-
+// sp -767
+
+@mixin tablet {
+  @media(max-width: 1279px) {
+    @content;
+  }
+}
+
+@mixin sp {
+  @media(max-width: 767px) {
+    @content;
+  }
+}
+
+// vw値 計算用 ここから　参考：https://meshikui.com/2021/12/13/3329/
+$pcSize: 1440px;
+$tabletSize: 768px;
+$spSize: 375px;
+
+@function pcvw($size: 10px) {
+  $pcvw: $size * 100vw / 1440px;
+  @return $pcvw
+}
+
+@function tabletvw($size: 10px) {
+  $tabletvw: $size * 100vw / 768px;
+  @return $tabletvw
+}
+
+@function spvw($size: 10px) {
+  $spvw: $size * 100vw / 375px;
+  @return $spvw
+}
+
+// vw値 計算用 ここまで
+
+footer {
+
+  p {
+    // width: 1440px;
+    // width: 100%;
+    // height: 50px;
+    // height: pcvw(50px);
+    // padding: pcvw(21px) pcvw(671px) pcvw(19px) pcvw(663px);
+    padding-top: pcvw(21px);
+    padding-bottom: pcvw(19px);
+    background: #525252;
+    // font-family: "Montserrat Medium";
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 500;
+    // font-size: 10px;
+    font-size: pcvw(10px);
+    letter-spacing: 0.02em;
+    // line-height: 32px;
+    text-align: center;
+    color: #fff;
+
+    @include tablet {
+      padding-top: tabletvw(21px);
+      padding-bottom: tabletvw(19px);
+      font-size: tabletvw(10px);
+    }
+
+    @include sp {
+      padding-top: spvw(21px);
+      padding-bottom: spvw(19px);
+      font-size: spvw(10px);
+    }
+  }
+}
+
+
+// footer {
+//   height: pcvw(50px);
+//   background: #525252;
+//   // position: relative;
+
+//   @include tablet {
+//     height: tabletvw(50px);
+//   }
+
+//   @include sp {
+//     height: spvw(50px);
+//   }
+
+//   p {
+//     font-family: 'Montserrat', sans-serif;
+//     font-weight: 500;
+//     // font-size: 10px;
+//     font-size: pcvw(10px);
+//     letter-spacing: 0.02em;
+//     // line-height: 32px;
+//     text-align: center;
+//     color: #fff;
+//     padding-top: pcvw(21px);
+
+//     @include tablet {
+//       font-size: tabletvw(10px);
+//       padding-top: tabletvw(21px);
+//     }
+
+//     @include sp {
+//       font-size: spvw(10px);
+//       padding-top: spvw(21px);
+//     }
+//   }
+// }

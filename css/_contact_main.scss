@@ -1,0 +1,848 @@
+// pc 1280-
+// tablet 768-
+// sp -767
+
+@mixin tablet {
+  @media(max-width: 1279px) {
+    @content;
+  }
+}
+
+@mixin sp {
+  @media(max-width: 767px) {
+    @content;
+  }
+}
+
+// vw値 計算用 ここから　参考：https://meshikui.com/2021/12/13/3329/
+$pcSize: 1440px;
+$tabletSize: 768px;
+$spSize: 375px;
+
+@function pcvw($size: 10px) {
+  $pcvw: $size * 100vw / 1440px;
+  @return $pcvw
+}
+
+@function tabletvw($size: 10px) {
+  $tabletvw: $size * 100vw / 768px;
+  @return $tabletvw
+}
+
+@function spvw($size: 10px) {
+  $spvw: $size * 100vw / 375px;
+  @return $spvw
+}
+
+// vw値 計算用 ここまで
+
+
+.contact-main {
+  padding-left: calc(370px / 1440px * 100%);
+  padding-right: calc(370px / 1440px * 100%);
+
+  @include tablet {
+    padding-left: calc(50px / 768px * 100%);
+    padding-right: calc(50px / 768px * 100%);
+  }
+
+  @include sp {
+    padding-left: calc(15px / 375px * 100%);
+    padding-right: calc(15px / 375px * 100%);
+  }
+
+  .contact-explain {
+    padding-top: pcvw(120px);
+    // width: 700px;
+    // height: 53px;
+    // font-family: "Noto Sans JP";
+    font-family: 'Noto Sans JP', sans-serif;
+    font-weight: 400;
+    // font-size: 16px;
+    font-size: pcvw(16px);
+    letter-spacing: 0em;
+    // line-height: 24px;
+    line-height: calc(24px / 16px);
+    // text-align: left;
+    color: #333;
+
+    @include tablet {
+      padding-top: tabletvw(135px);
+      font-size: tabletvw(16px);
+    }
+
+    @include sp {
+      padding-top: spvw(80px);
+      font-size: spvw(14px);
+    }
+  }
+
+
+  .form-classify {
+    padding-top: pcvw(50px);
+
+    @include tablet {
+      padding-top: tabletvw(16px);
+    }
+
+    @include sp {
+      padding-top: spvw(51px);
+    }
+
+    .form-label {
+      display: flex;
+      align-items: center;
+      padding-bottom: pcvw(18px);
+
+      @include tablet {
+        padding-bottom: tabletvw(17px);
+      }
+
+      @include sp {
+        padding-bottom: spvw(20px);
+      }
+
+      .form-label-left {
+        // font-family: "Noto Sans JP Bold";
+        font-family: 'Noto Sans JP', sans-serif;
+        font-weight: bold;
+        // font-size: 16px;
+        font-size: pcvw(16px);
+        letter-spacing: 0em;
+        // line-height: 94px;
+        // text-align: left;
+        color: #333;
+        padding-right: pcvw(10px);
+
+        @include tablet {
+          font-size: tabletvw(16px);
+          padding-right: tabletvw(10px);
+        }
+
+        @include sp {
+          font-size: spvw(16px);
+          padding-right: spvw(10px);
+        }
+      }
+
+      .form-label-right {
+        // width: 34px;
+        // width: pcvw(34px);
+        // height: 18px;
+        // height: pcvw(18px);
+        background: #333;
+        // font-family: "Noto Sans JP Bold";
+        font-family: 'Noto Sans JP', sans-serif;
+        font-weight: bold;
+        // font-size: 12px;
+        font-size: pcvw(12px);
+        letter-spacing: 0em;
+        // line-height: 94px;
+        // text-align: left;
+        color: #fff;
+        border-color: #333;
+        border-style: solid;
+        border-width: 0px 5px 1px;
+
+        @include tablet {
+          font-size: tabletvw(12px);
+          border-width: tabletvw(3px) tabletvw(5px);
+        }
+
+        @include sp {
+          font-size: spvw(12px);
+          border-width: spvw(3px) spvw(5px);
+        }
+      }
+    }
+
+    // .flex-radio {
+    //   display: flex;
+    //   align-items: center;
+    // }
+
+    .radio-sp {
+      @include sp {
+        display: block;
+        padding-bottom: spvw(15px);
+      }
+    }
+
+    input {
+      // -webkit-appearance: auto;
+      appearance: auto;
+      width: pcvw(20px);
+      height: pcvw(20px);
+      margin-right: pcvw(10px);
+      vertical-align: bottom;
+
+      @include tablet {
+        width: tabletvw(20px);
+        height: tabletvw(20px);
+        margin-right: tabletvw(10px);
+      }
+
+      @include sp {
+        width: spvw(20px);
+        height: spvw(20px);
+        margin-right: spvw(10px);
+      }
+    }
+
+    label {
+      // font-family: YuGothic;
+      font-family: "游ゴシック体", YuGothic, "游ゴシック", "Yu Gothic", system-ui;
+      font-weight: 500;
+      // font-size: 16px;
+      font-size: pcvw(16px);
+      letter-spacing: 0em;
+      // line-height: 94px;
+      // text-align: left;
+      color: #333;
+      padding-right: pcvw(50px);
+
+      @include tablet {
+        font-size: tabletvw(16px);
+        padding-right: tabletvw(50px);
+      }
+
+      @include sp {
+        font-size: spvw(16px);
+        padding-right: 0;
+      }
+    }
+  }
+
+  .form-company {
+
+    .form-company-title {
+      // font-family: "Noto Sans JP Bold";
+      font-family: 'Noto Sans JP', sans-serif;
+      font-weight: bold;
+      // font-size: 16px;
+      font-size: pcvw(16px);
+      letter-spacing: 0em;
+      // line-height: 94px;
+      // text-align: left;
+      color: #333;
+      padding-top: pcvw(40px);
+      padding-bottom: pcvw(7px);
+
+      @include tablet {
+        font-size: tabletvw(16px);
+        padding-top: tabletvw(35px);
+        padding-bottom: tabletvw(7px);
+      }
+
+      @include sp {
+        font-size: spvw(16px);
+        padding-top: spvw(40px - 15px);
+        padding-bottom: spvw(10px);
+      }
+    }
+
+    input {
+      // width: 700px;
+      // width: pcvw(700px);
+      width: 100%;
+      // height: 41px;
+      height: pcvw(41px);
+      background: #fff;
+      border: 1px solid #333;
+      font-size: pcvw(25px);
+
+      @include tablet {
+        height: tabletvw(48px);
+        font-size: tabletvw(24px);
+      }
+
+      @include sp {
+        height: spvw(48px);
+        font-size: spvw(24px);
+      }
+
+      &::placeholder {
+        font-size: pcvw(25px);
+        vertical-align: middle;
+
+        @include tablet {
+          font-size: tabletvw(24px);
+        }
+
+        @include sp {
+          font-size: spvw(24px);
+        }
+      }
+    }
+  }
+
+  .form-name {
+    padding-top: pcvw(40px);
+
+    @include tablet {
+      padding-top: tabletvw(35px);
+    }
+
+    @include sp {
+      padding-top: spvw(40px);
+    }
+
+    .form-label {
+      display: flex;
+      align-items: center;
+      padding-bottom: pcvw(10px);
+
+      @include tablet {
+        padding-bottom: tabletvw(9px);
+      }
+
+      @include sp {
+        padding-bottom: spvw(12px);
+      }
+
+      .form-label-left {
+        // font-family: "Noto Sans JP Bold";
+        font-family: 'Noto Sans JP', sans-serif;
+        font-weight: bold;
+        // font-size: 16px;
+        font-size: pcvw(16px);
+        letter-spacing: 0em;
+        // line-height: 94px;
+        // text-align: left;
+        color: #333;
+        padding-right: pcvw(10px);
+
+        @include tablet {
+          font-size: tabletvw(16px);
+          padding-right: tabletvw(8px);
+        }
+
+        @include sp {
+          font-size: spvw(16px);
+          padding-right: spvw(8px);
+        }
+      }
+
+      .form-label-right {
+        // width: 34px;
+        // width: pcvw(34px);
+        // height: 18px;
+        // height: pcvw(18px);
+        background: #333;
+        // font-family: "Noto Sans JP Bold";
+        font-family: 'Noto Sans JP', sans-serif;
+        font-weight: bold;
+        // font-size: 12px;
+        font-size: pcvw(12px);
+        letter-spacing: 0em;
+        // line-height: 94px;
+        // text-align: left;
+        color: #fff;
+        border-color: #333;
+        border-style: solid;
+        border-width: 0px 5px 1px;
+
+        @include tablet {
+          font-size: tabletvw(12px);
+          border-width: tabletvw(3px) tabletvw(5px);
+        }
+
+        @include sp {
+          font-size: spvw(12px);
+          border-width: spvw(3px) spvw(5px);
+        }
+      }
+    }
+
+    input {
+      // width: 700px;
+      // width: pcvw(700px);
+      width: 100%;
+      // height: 41px;
+      height: pcvw(41px);
+      background: #fff;
+      border: 1px solid #333;
+      font-size: pcvw(25px);
+
+      @include tablet {
+        height: tabletvw(48px);
+        font-size: tabletvw(24px);
+      }
+
+      @include sp {
+        height: spvw(48px);
+        font-size: spvw(24px);
+      }
+
+      &::placeholder {
+        font-size: pcvw(25px);
+
+        @include tablet {
+          font-size: tabletvw(24px);
+        }
+
+        @include sp {
+          font-size: spvw(24px);
+        }
+      }
+    }
+  }
+
+
+  .form-mail {
+    padding-top: pcvw(40px);
+
+    @include tablet {
+      padding-top: tabletvw(35px);
+    }
+
+    @include sp {
+      padding-top: spvw(40px);
+    }
+
+    .form-label {
+      display: flex;
+      align-items: center;
+      padding-bottom: pcvw(10px);
+
+      @include tablet {
+        padding-bottom: tabletvw(9px);
+      }
+
+      @include sp {
+        padding-bottom: spvw(12px);
+      }
+
+      .form-label-left {
+        // font-family: "Noto Sans JP Bold";
+        font-family: 'Noto Sans JP', sans-serif;
+        font-weight: bold;
+        // font-size: 16px;
+        font-size: pcvw(16px);
+        letter-spacing: 0em;
+        // line-height: 94px;
+        // text-align: left;
+        color: #333;
+        padding-right: pcvw(10px);
+
+        @include tablet {
+          font-size: tabletvw(16px);
+          padding-right: tabletvw(10px);
+        }
+
+        @include sp {
+          font-size: spvw(16px);
+          padding-right: spvw(10px);
+        }
+      }
+
+      .form-label-right {
+        // width: 34px;
+        // width: pcvw(34px);
+        // height: 18px;
+        // height: pcvw(18px);
+        background: #333;
+        // font-family: "Noto Sans JP Bold";
+        font-family: 'Noto Sans JP', sans-serif;
+        font-weight: bold;
+        // font-size: 12px;
+        font-size: pcvw(12px);
+        letter-spacing: 0em;
+        // line-height: 94px;
+        // text-align: left;
+        color: #fff;
+        border-color: #333;
+        border-style: solid;
+        border-width: 0px 5px 1px;
+
+        @include tablet {
+          font-size: tabletvw(12px);
+          border-width: tabletvw(3px) tabletvw(5px);
+        }
+
+        @include sp {
+          font-size: spvw(12px);
+          border-width: spvw(3px) spvw(5px);
+        }
+      }
+    }
+
+    input {
+      // width: 700px;
+      // width: pcvw(700px);
+      width: 100%;
+      // height: 41px;
+      height: pcvw(41px);
+      background: #fff;
+      border: 1px solid #333;
+      font-size: pcvw(25px);
+
+      @include tablet {
+        height: tabletvw(48px);
+        font-size: tabletvw(24px);
+      }
+
+      @include sp {
+        height: spvw(48px);
+        font-size: spvw(24px);
+      }
+
+      &::placeholder {
+        font-size: pcvw(25px);
+
+        @include tablet {
+          font-size: tabletvw(24px);
+        }
+
+        @include sp {
+          font-size: spvw(24px);
+        }
+      }
+    }
+  }
+
+  .form-tel {
+
+    .form-tel-title {
+      // font-family: "Noto Sans JP Bold";
+      font-family: 'Noto Sans JP', sans-serif;
+      font-weight: bold;
+      // font-size: 16px;
+      font-size: pcvw(16px);
+      letter-spacing: 0em;
+      // line-height: 94px;
+      // text-align: left;
+      color: #333;
+      padding-top: pcvw(40px);
+      padding-bottom: pcvw(7px);
+
+      @include tablet {
+        font-size: tabletvw(16px);
+        padding-top: tabletvw(35px);
+        padding-bottom: tabletvw(7px);
+      }
+
+      @include sp {
+        font-size: spvw(16px);
+        padding-top: spvw(40px);
+        padding-bottom: spvw(10px);
+      }
+    }
+
+    input {
+      // width: 700px;
+      // width: pcvw(700px);
+      width: 100%;
+      // height: 41px;
+      height: pcvw(41px);
+      background: #fff;
+      border: 1px solid #333;
+      font-size: pcvw(25px);
+
+      @include tablet {
+        height: tabletvw(48px);
+        font-size: tabletvw(24px);
+      }
+
+      @include sp {
+        height: spvw(48px);
+        font-size: spvw(24px);
+      }
+
+      &::placeholder {
+        font-size: pcvw(25px);
+
+        @include tablet {
+          font-size: tabletvw(24px);
+        }
+
+        @include sp {
+          font-size: spvw(24px);
+        }
+      }
+    }
+  }
+
+
+  .form-inquiry {
+    padding-top: pcvw(40px);
+
+    @include tablet {
+      padding-top: tabletvw(36px);
+    }
+
+    @include sp {
+      padding-top: spvw(41px);
+    }
+
+    .form-label {
+      display: flex;
+      align-items: center;
+      padding-bottom: pcvw(10px);
+
+      @include tablet {
+        padding-bottom: tabletvw(8px);
+      }
+
+      @include sp {
+        padding-bottom: spvw(11px);
+      }
+
+      .form-label-left {
+        // font-family: "Noto Sans JP Bold";
+        font-family: 'Noto Sans JP', sans-serif;
+        font-weight: bold;
+        // font-size: 16px;
+        font-size: pcvw(16px);
+        letter-spacing: 0em;
+        // line-height: 94px;
+        // text-align: left;
+        color: #333;
+        padding-right: pcvw(10px);
+
+        @include tablet {
+          font-size: tabletvw(16px);
+          padding-right: tabletvw(10px);
+        }
+
+        @include sp {
+          font-size: spvw(16px);
+          padding-right: spvw(10px);
+        }
+      }
+
+      .form-label-right {
+        // width: 34px;
+        // width: pcvw(34px);
+        // height: 18px;
+        // height: pcvw(18px);
+        background: #333;
+        // font-family: "Noto Sans JP Bold";
+        font-family: 'Noto Sans JP', sans-serif;
+        font-weight: bold;
+        // font-size: 12px;
+        font-size: pcvw(12px);
+        letter-spacing: 0em;
+        // line-height: 94px;
+        // text-align: left;
+        color: #fff;
+        border-color: #333;
+        border-style: solid;
+        border-width: 0px 5px 1px;
+
+        @include tablet {
+          font-size: tabletvw(12px);
+          border-width: tabletvw(3px) tabletvw(5px);
+        }
+
+        @include sp {
+          font-size: spvw(12px);
+          border-width: spvw(3px) spvw(5px);
+        }
+      }
+    }
+
+    textarea {
+      // width: 700px;
+      // width: pcvw(700px);
+      width: 100%;
+      // height: 212px;
+      height: pcvw(212px);
+      background: #fff;
+      border: 1px solid #333;
+      font-size: pcvw(25px);
+
+      @include tablet {
+        height: tabletvw(180px);
+        font-size: tabletvw(24px);
+      }
+
+      @include sp {
+        height: spvw(210px);
+        font-size: spvw(24px);
+      }
+
+      &::placeholder {
+        font-size: pcvw(25px);
+
+        @include tablet {
+          font-size: tabletvw(24px);
+        }
+
+        @include sp {
+          font-size: spvw(24px);
+        }
+      }
+    }
+  }
+
+  .form-privacy {
+    // font-family: "Montserrat ExtraBold";
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 800;
+    // font-size: 16px;
+    font-size: pcvw(16px);
+    letter-spacing: 0em;
+    // line-height: 94px;
+    text-align: left;
+    color: #272727;
+    padding-top: pcvw(40px);
+    padding-bottom: pcvw(10px);
+
+    @include tablet {
+      font-size: tabletvw(16px);
+      padding-top: tabletvw(40px);
+      padding-bottom: tabletvw(10px);
+    }
+
+    @include sp {
+      font-size: spvw(16px);
+      padding-top: spvw(40px);
+      padding-bottom: spvw(10px);
+    }
+  }
+
+  .privacy-policy {
+    width: 100%;
+    height: pcvw(252px);
+    // font-family: "Noto Sans JP";
+    font-family: 'Noto Sans JP', sans-serif;
+    font-weight: 400;
+    // font-size: 16px;
+    font-size: pcvw(16px);
+    // font-size: calc(16px / 1440px * 100%);
+    // font-size: 1.6rem;
+    letter-spacing: 0em;
+    // line-height: 24px;
+    line-height: calc(24 / 16);
+    text-align: left;
+    color: #333;
+    background: #fff;
+    border: 1px solid #333;
+    overflow-y: scroll;
+    // padding: pcvw(10px);
+    padding: calc(10px / 1440px * 100%);
+
+    @include tablet {
+      height: tabletvw(226px);
+      font-size: tabletvw(16px);
+      padding: calc(10px / 768px * 100%) calc(15px / 768px * 100%);
+    }
+
+    @include sp {
+      height: spvw(226px);
+      font-size: spvw(14px);
+      padding: calc(10px / 375px * 100%);
+    }
+  }
+
+  .check-disabled {
+    color: #afafaf;
+  }
+
+  .check-style {
+    padding-top: pcvw(40px);
+    // text-align: center;
+    display: flex;
+    justify-content: center;
+
+    @include tablet {
+      padding-top: tabletvw(40px);
+    }
+
+    @include sp {
+      padding-top: spvw(40px);
+    }
+
+    input {
+      appearance: auto;
+      // width: 20px;
+      width: pcvw(20px);
+      // height: 20px;
+      height: pcvw(20px);
+      background: #fff;
+      border: 1px solid #333;
+      vertical-align: top;
+      margin-right: pcvw(10px);
+
+      @include tablet {
+        width: tabletvw(20px);
+        height: tabletvw(20px);
+        margin-right: tabletvw(10px);
+      }
+
+      @include sp {
+        width: spvw(16px);
+        height: spvw(16px);
+        margin-right: spvw(10px);
+      }
+    }
+
+    label {
+      // font-family: "Noto Sans JP";
+      font-family: 'Noto Sans JP', sans-serif;
+      font-weight: 400;
+      // font-size: 16px;
+      font-size: pcvw(16px);
+      letter-spacing: 0em;
+      // line-height: 24px;
+      // text-align: left;
+      color: #333;
+
+      @include tablet {
+        font-size: tabletvw(16px);
+      }
+
+      @include sp {
+        font-size: spvw(14px);
+      }
+    }
+  }
+
+  .form-submit {
+    // position: relative;
+    margin: pcvw(40px) auto pcvw(120px);
+    text-align: center;
+
+    @include tablet {
+      margin: tabletvw(40px) auto tabletvw(197px);
+    }
+
+    @include sp {
+      margin: spvw(40px) auto spvw(80px);
+    }
+
+    input[type="submit"] {
+      // position: absolute;
+      // top: 50%;
+      // left: 50%;
+      // transform: translate(-50%, -50%);
+      // width: 160px;
+      width: pcvw(160px);
+      // height: 36px;
+      height: pcvw(36px);
+      background: #000;
+      // font-family: "Montserrat Medium";
+      font-family: 'Montserrat', sans-serif;
+      font-weight: bold;
+      // font-size: 14px;
+      font-size: pcvw(14px);
+      letter-spacing: 0.02em;
+      // line-height: 32px;
+      text-align: center;
+      color: #fff;
+
+      @include tablet {
+        width: tabletvw(160px);
+        height: tabletvw(36px);
+        font-size: tabletvw(14px);
+      }
+
+      @include sp {
+        width: spvw(160px);
+        height: spvw(36px);
+        font-size: spvw(14px);
+      }
+    }
+  }
+}

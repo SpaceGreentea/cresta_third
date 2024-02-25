@@ -1,0 +1,546 @@
+// pc 1280-
+// tablet 768-
+// sp -767
+
+@mixin tablet {
+  @media(max-width: 1279px) {
+    @content;
+  }
+}
+
+@mixin sp {
+  @media(max-width: 767px) {
+    @content;
+  }
+}
+
+// vw値 計算用 ここから　参考：https://meshikui.com/2021/12/13/3329/
+$pcSize: 1440px;
+$tabletSize: 768px;
+$spSize: 375px;
+
+@function pcvw($size: 10px) {
+  $pcvw: $size * 100vw / 1440px;
+  @return $pcvw
+}
+
+@function tabletvw($size: 10px) {
+  $tabletvw: $size * 100vw / 768px;
+  @return $tabletvw
+}
+
+@function spvw($size: 10px) {
+  $spvw: $size * 100vw / 375px;
+  @return $spvw
+}
+
+// vw値 計算用 ここまで
+
+
+.about-main {
+  padding-left: pcvw(170px);
+  padding-right: pcvw(170px);
+
+  @include tablet {
+    padding-left: tabletvw(30px);
+    padding-right: tabletvw(30px);
+  }
+
+  @include sp {
+    padding-left: spvw(15px);
+    padding-right: spvw(15px);
+  }
+
+  .about-main-title1 {
+    position: absolute;
+    top: pcvw(584px);
+    left: pcvw(396px);
+    // font-family: "Montserrat ExtraBold";
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 800;
+    // font-size: 32px;
+    font-size: pcvw(32px);
+    letter-spacing: 0.07em;
+    // line-height: 94px;
+    // text-align: left;
+    color: #333;
+
+    @include tablet {
+      top: tabletvw(695px);
+      left: tabletvw(150px);
+      font-size: tabletvw(32px);
+    }
+
+    @include sp {
+      top: spvw(529px);
+      left: spvw(15px);
+      font-size: spvw(32px);
+    }
+  }
+
+  .about-main-subtitle1 {
+    position: absolute;
+    top: pcvw(653px);
+    left: pcvw(396px);
+    // font-family: YuGothic;
+    font-family: "游ゴシック体", YuGothic, "游ゴシック", "Yu Gothic", system-ui;
+    font-weight: bold;
+    // font-size: 24px;
+    font-size: pcvw(24px);
+    letter-spacing: 0.01em;
+    // line-height: 283px;
+    // text-align: left;
+    color: #333;
+
+    @include tablet {
+      top: tabletvw(757px);
+      left: tabletvw(150px);
+      font-size: tabletvw(24px);
+    }
+
+    @include sp {
+      top: spvw(598px);
+      left: spvw(15px);
+      font-size: spvw(24px);
+    }
+  }
+
+  .about-main-sentence {
+    position: absolute;
+    top: pcvw(707px);
+    left: pcvw(396px);
+    // width: 415px;
+    // height: 482px;
+    // font-family: "Noto Sans JP Bold";
+    font-family: 'Noto Sans JP', sans-serif;
+    font-weight: bold;
+    // font-size: 16px;
+    font-size: pcvw(16px);
+    // line-height: 32px;
+    line-height: calc(32 / 16);
+    // text-align: left;
+    color: #333;
+
+    @include tablet {
+      top: tabletvw(823px);
+      left: tabletvw(150px);
+      font-size: tabletvw(14px);
+    }
+
+    @include sp {
+      top: spvw(664px);
+      left: spvw(15px);
+      font-size: spvw(14px);
+    }
+  }
+
+  .about-ceo-img {
+    position: absolute;
+    top: pcvw(1309px);
+    left: pcvw(170px);
+    z-index: 30;
+    // width: 420px;
+    width: pcvw(420px);
+    // height: 282.45px;
+    height: pcvw(282.45px);
+    aspect-ratio: 420 / 282.45;
+    background: transparent;
+
+    @include tablet {
+      top: tabletvw(1318px);
+      left: tabletvw(30px);
+      width: tabletvw(320px);
+      height: tabletvw(216px);
+      aspect-ratio: 320 / 216;
+    }
+
+    @include sp {
+      top: spvw(1162px);
+      left: 0;
+      width: spvw(340px);
+      height: spvw(230px);
+      aspect-ratio: 340 / 230;
+    }
+  }
+
+  .ceo-message {
+    position: absolute;
+    top: pcvw(1453px);
+    right: pcvw(170px);
+    // right: calc(170px / 1440px * 100%);
+    // width: 770px;
+    width: pcvw(770px);
+    // height: 756px;
+    height: pcvw(756px);
+    background: #f0f0f0;
+
+    @include tablet {
+      top: tabletvw(1449px);
+      right: tabletvw(30px);
+      width: tabletvw(494px);
+      height: tabletvw(687px);
+    }
+
+    @include sp {
+      top: spvw(1291px);
+      left: spvw(15px);
+      // left: calc(15px / 375px * 100%);
+      // right: spvw(15px);
+      // transform: translateX(-50%);
+      // width: spvw(345px);
+      width: calc(345px / 375px * 100%);
+      height: spvw(799px);
+    }
+
+    .message-content {
+      position: absolute;
+      top: pcvw(120px);
+      left: pcvw(185px);
+      width: pcvw(400px);
+
+      @include tablet {
+        top: tabletvw(109px);
+        left: tabletvw(41px);
+        width: tabletvw(415px);
+      }
+
+      @include sp {
+        top: spvw(126px);
+        left: spvw(28px);
+        width: spvw(288px);
+      }
+    }
+
+    h3 {
+      // font-family: "Montserrat ExtraBold";
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 800;
+      // font-size: 32px;
+      font-size: pcvw(32px);
+      letter-spacing: 0.07em;
+      // line-height: 39px;
+      // text-align: left;
+      color: #333;
+      padding-bottom: pcvw(30px);
+
+      @include tablet {
+        font-size: tabletvw(32px);
+        padding-bottom: tabletvw(30px);
+      }
+
+      @include sp {
+        font-size: spvw(31px);
+        padding-bottom: spvw(30px);
+      }
+    }
+
+    p {
+      // width: 400px;
+      // height: 477px;
+      // font-family: "Noto Sans JP Bold";
+      font-family: 'Noto Sans JP', sans-serif;
+      font-weight: bold;
+      // font-size: 16px;
+      font-size: pcvw(16px);
+      // line-height: 32px;
+      line-height: calc(32 / 16);
+      // text-align: left;
+      color: #333;
+
+      @include tablet {
+        font-size: tabletvw(16px);
+        line-height: calc(28 / 16);
+      }
+
+      @include sp {
+        font-size: spvw(14px);
+        line-height: calc(28 / 14);
+      }
+    }
+  }
+
+  .company-title {
+    position: absolute;
+    top: pcvw(2329px);
+    left: pcvw(170px);
+    // font-family: "Montserrat ExtraBold";
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 800;
+    // font-size: 32px;
+    font-size: pcvw(32px);
+    letter-spacing: 0.07em;
+    // line-height: 94px;
+    // text-align: left;
+    color: #333;
+    // width: 1100px;
+    width: pcvw(1100px);
+    // width: calc(1100px / 1440px * 100%);
+    // height: 0px;
+    // background: transparent;
+    border-bottom: 1px solid #ddd;
+    padding-bottom: pcvw(30px);
+
+    @include tablet {
+      top: tabletvw(2218px);
+      left: tabletvw(30px);
+      font-size: tabletvw(32px);
+      width: tabletvw(708px);
+      padding-bottom: tabletvw(30px);
+    }
+
+    @include sp {
+      top: spvw(2170px);
+      left: spvw(15px);
+      font-size: spvw(32px);
+      width: calc(345px / 375px * 100%);
+      padding-bottom: spvw(30px);
+    }
+  }
+
+  .company-contents {
+    display: flex;
+    // width: 800px;
+    width: pcvw(800px);
+    // height: 0px;
+    // background: transparent;
+    border-bottom: 1px solid #ddd;
+    padding-bottom: pcvw(20px);
+
+    @include tablet {
+      width: tabletvw(678px);
+      padding-bottom: tabletvw(20px);
+    }
+
+    @include sp {
+      width: calc(345px / 375px * 100%);
+      padding-bottom: spvw(20px);
+    }
+
+    .contents-left {
+      // font-family: YuGothic;
+      font-family: "游ゴシック体", YuGothic, "游ゴシック", "Yu Gothic", system-ui;
+      font-weight: bold;
+      // font-size: 16px;
+      font-size: pcvw(16px);
+      letter-spacing: 0em;
+      // line-height: 94px;
+      // text-align: left;
+      color: #333;
+
+      @include tablet {
+        font-size: tabletvw(16px);
+      }
+
+      @include sp {
+        font-size: spvw(14px);
+      }
+    }
+
+    .contents-right {
+      // font-family: YuGothic;
+      font-family: "游ゴシック体", YuGothic, "游ゴシック", "Yu Gothic", system-ui;
+      font-weight: 500;
+      // font-size: 16px;
+      font-size: pcvw(16px);
+      letter-spacing: 0em;
+      // line-height: 94px;
+      // text-align: left;
+      color: #333;
+
+      @include tablet {
+        font-size: tabletvw(16px);
+      }
+
+      @include sp {
+        font-size: spvw(14px);
+      }
+    }
+
+    .p-right1 {
+      padding-left: pcvw(112px);
+
+      @include tablet {
+        padding-left: tabletvw(112px);
+      }
+
+      @include sp {
+        padding-left: spvw(135px);
+      }
+    }
+
+    .p-right2 {
+      padding-left: pcvw(64px);
+
+      @include tablet {
+        padding-left: tabletvw(64px);
+      }
+
+      @include sp {
+        padding-left: spvw(93px);
+      }
+    }
+
+    .p-right3 {
+      padding-left: pcvw(112px);
+
+      @include tablet {
+        padding-left: tabletvw(112px);
+      }
+
+      @include sp {
+        padding-left: spvw(128px + 7px); //カンプの設立の文字がなぜか7pxずれているので、+7px
+      }
+    }
+
+    .p-right4 {
+      padding-left: pcvw(96px);
+
+      @include tablet {
+        padding-left: tabletvw(96px);
+      }
+
+      @include sp {
+        padding-left: spvw(121px);
+      }
+    }
+
+    .p-right5 {
+      padding-left: pcvw(96px);
+
+      @include tablet {
+        padding-left: tabletvw(96px);
+      }
+
+      @include sp {
+        padding-left: spvw(121px);
+      }
+    }
+
+    .p-right6 {
+      padding-left: pcvw(80px);
+
+      @include tablet {
+        padding-left: tabletvw(80px);
+      }
+
+      @include sp {
+        padding-left: spvw(107px);
+      }
+    }
+  }
+
+  .contents-position1 {
+    position: absolute;
+    top: pcvw(2418px);
+    left: pcvw(470px);
+
+    @include tablet {
+      top: tabletvw(2307px);
+      left: tabletvw(60px);
+    }
+
+    @include sp {
+      top: spvw(2259px);
+      left: spvw(15px);
+    }
+  }
+
+  .contents-position2 {
+    position: absolute;
+    top: pcvw(2474px);
+    left: pcvw(470px);
+
+    @include tablet {
+      top: tabletvw(2363px);
+      left: tabletvw(60px);
+    }
+
+    @include sp {
+      top: spvw(2319px);
+      left: spvw(15px);
+    }
+  }
+
+  .contents-position3 {
+    position: absolute;
+    top: pcvw(2530px);
+    left: pcvw(470px);
+
+    @include tablet {
+      top: tabletvw(2419px);
+      left: tabletvw(60px);
+    }
+
+    @include sp {
+      top: spvw(2379px);
+      left: spvw(15px);
+    }
+  }
+
+  .contents-position4 {
+    position: absolute;
+    top: pcvw(2586px);
+    left: pcvw(470px);
+
+    @include tablet {
+      top: tabletvw(2475px);
+      left: tabletvw(60px);
+    }
+
+    @include sp {
+      top: spvw(2439px);
+      left: spvw(15px);
+    }
+  }
+
+  .contents-position5 {
+    position: absolute;
+    top: pcvw(2645px);
+    left: pcvw(470px);
+
+    @include tablet {
+      top: tabletvw(2534px);
+      left: tabletvw(60px);
+    }
+
+    @include sp {
+      top: spvw(2499px);
+      left: spvw(15px);
+    }
+  }
+
+  .contents-position6 {
+    position: absolute;
+    top: pcvw(2701px);
+    left: pcvw(470px);
+
+    @include tablet {
+      top: tabletvw(2590px);
+      left: tabletvw(60px);
+    }
+
+    @include sp {
+      top: spvw(2555px);
+      left: spvw(15px);
+    }
+  }
+
+  .map {
+    position: absolute;
+    top: pcvw(2777px);
+    width: pcvw(1100px);
+    height: pcvw(360px);
+
+    @include tablet {
+      top: tabletvw(2666px);
+      width: tabletvw(708px);
+      height: tabletvw(230px);
+    }
+
+    @include sp {
+      top: spvw(2633px);
+      width: calc(345px / 375px * 100%);
+      height: spvw(470px);
+    }
+  }
+}

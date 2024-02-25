@@ -1,0 +1,190 @@
+// pc 1280-
+// tablet 768-
+// sp -767
+
+@mixin tablet {
+  @media(max-width: 1279px) {
+    @content;
+  }
+}
+
+@mixin sp {
+  @media(max-width: 767px) {
+    @content;
+  }
+}
+
+// vw値 計算用 ここから　参考：https://meshikui.com/2021/12/13/3329/
+$pcSize: 1440px;
+$tabletSize: 768px;
+$spSize: 375px;
+
+@function pcvw($size: 10px) {
+  $pcvw: $size * 100vw / 1440px;
+  @return $pcvw
+}
+
+@function tabletvw($size: 10px) {
+  $tabletvw: $size * 100vw / 768px;
+  @return $tabletvw
+}
+
+@function spvw($size: 10px) {
+  $spvw: $size * 100vw / 375px;
+  @return $spvw
+}
+
+// vw値 計算用 ここまで
+
+.contact-header {
+  height: pcvw(451px);
+
+  @include tablet {
+    height: tabletvw(615px);
+  }
+
+  @include sp {
+    height: spvw(365px);
+  }
+}
+
+.bg-image-contact {
+  background-image: url("../img/heading-img_contact-pc.jpg");
+  background-size: contain;
+  background-repeat: no-repeat;
+  width: calc(1100px / 1440px * 100%);
+  // height: 100%;
+  aspect-ratio: 1100 / 387;
+  position: relative;
+  z-index: 200;
+
+  @include tablet {
+    background-image: url("../img/heading-img_contact-tablet.jpg");
+    width: calc(587px / 768px * 100%);
+    aspect-ratio: 587 / 529;
+
+    &::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      background: black;
+      opacity: 0.4;
+      // width: calc(587px / 768px * 100%);
+      // width: 100%;
+      // aspect-ratio: 587 / 529;
+      width: 98.5%; //調整用の適当な値
+    }
+  }
+
+  @include sp {
+    background-image: url("../img/heading-img_contact-sp.jpg");
+    width: calc(287px / 375px * 100%);
+    aspect-ratio: 287 / 375;
+
+    &::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      background: black;
+      opacity: 0.4;
+      // width: calc(287px / 375px * 100%);
+      width: 100%; //調整用の適当な値
+      height: 72.1%; //調整用の適当な値
+      // aspect-ratio: 287 / 375;
+    }
+  }
+}
+
+.bg_kv-contact {
+  width: calc(780px / 1440px * 100%);
+  height: calc(451px * 100vw / 1440px);
+  background: #222;
+  position: absolute;
+  top: 0;
+  right: 0;
+  z-index: 100;
+
+  @include tablet {
+    width: calc(406px / 768px * 100%);
+    height: calc(615px * 100vw / 768px);
+  }
+
+  @include sp {
+    width: calc(198px / 375px * 100%);
+    height: calc(365px * 100vw / 375px);
+  }
+}
+
+.contact-header-title-contents {
+  position: absolute;
+  top: pcvw(156px);
+  right: pcvw(150px);
+  z-index: 300;
+
+  @include tablet {
+    top: tabletvw(132px);
+    right: tabletvw(50px);
+  }
+
+  @include sp {
+    top: spvw(129px);
+    right: spvw(21px);
+  }
+
+  .contact-header-title {
+    // position: absolute;
+    // top: pcvw(156px);
+    // right: pcvw(170px);
+    // z-index: 300;
+    // font-family: "Montserrat ExtraBold";
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 800;
+    // font-size: 72px;
+    font-size: pcvw(72px);
+    letter-spacing: 0.06em;
+    // line-height: 86px;
+    // text-align: left;
+    color: #fff;
+
+    @include tablet {
+      font-size: tabletvw(52px);
+    }
+
+    @include sp {
+      font-size: spvw(52px);
+      letter-spacing: 0;
+    }
+  }
+
+  .contact-header-subtitle {
+    // position: absolute;
+    // top: pcvw(244px);
+    // right: pcvw(425px);
+    // left: pcvw(839px);
+    // z-index: 300;
+    // font-family: "Noto Sans JP Bold";
+    font-family: 'Noto Sans JP', sans-serif;
+    font-weight: bold;
+    // font-size: 20px;
+    font-size: pcvw(20px);
+    letter-spacing: 0.01em;
+    // line-height: 283px;
+    // text-align: left;
+    color: #fff;
+
+    @include tablet {
+      font-size: tabletvw(16px);
+    }
+
+    @include sp {
+      font-size: spvw(16px);
+      text-align: right;
+    }
+  }
+}
